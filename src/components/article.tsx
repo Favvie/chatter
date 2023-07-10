@@ -9,8 +9,18 @@ import outline_analytics from '../../public/icons/outline-analytics.svg'
 import manGlasses from '../../public/white_guy.png'
 import lady from '../../public/lady.png'
 import articlePic from '../../public/articlePic.png'
+import { StaticImageData } from 'next/image'
 
-const Article = ({authorImage, author, role, date, title, p, articleImage}) => {
+const Article = ({ authorImage, author, role, date, title, p, articleImage }:
+    {
+        author: string,
+        role: string,
+        date: string,
+        title: string,
+        p: string,
+        authorImage: StaticImageData,
+        articleImage?: StaticImageData
+    }) => {
   return (
     <div className='px-14 py-4 border-t border-b-[#d0d0d0]'>
                               <div className='flex space-x-3'>
@@ -28,8 +38,10 @@ const Article = ({authorImage, author, role, date, title, p, articleImage}) => {
                               <span className='text-[#626262] text-base flex py-2'><Image src={read} alt='read time icon' className='mr-2' /> 10 mins read</span>
                               <p className='text-lg text-[#626262]'>
                                   {p}
-                              </p>
-                              <Image src={articleImage} alt='a laptop,a mouse and a ipad with wireframes on the screen' className='rounded-lg my-3' />
+          </p>
+                    {articleImage &&
+                        <Image src={articleImage} alt='a laptop,a mouse and a ipad with wireframes on the screen' className='rounded-lg my-3' />
+                    }
                               <div className='text-[#626262] text-base flex items-center justify-between pb-4'>
                                   <span className='flex gap-x-2'><Image src={chat} alt='chat icon'/>200</span>
                                   <span className='flex gap-x-2'><Image src={heart} alt='like icon'/>120</span>
@@ -37,6 +49,10 @@ const Article = ({authorImage, author, role, date, title, p, articleImage}) => {
                               </div>
                           </div>
   )
+}
+
+Article.defaultProps = {
+    articleImage: null
 }
 
 export default Article

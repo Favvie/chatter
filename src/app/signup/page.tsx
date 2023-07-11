@@ -44,7 +44,7 @@ const router = useRouter()
         registerWithEmailAndPassword(firstName, email, password)
     }
 useEffect(() => {
-    if (loading) return 'loading...';
+    if (loading) return;
     if (user) router.push('/feed')
 }, [user, loading, router]);
     

@@ -14,12 +14,14 @@ import {
   signInWithGoogle,
 } from "../../services/firebase";
 
+import Loading from './loading';
+
 interface IFormInput {
   firstName: string
     lastName: string
     usertype: string
     password: string
-    confirmPassword: string
+    // confirmPassword: string
     email: string
 }
 
@@ -37,15 +39,16 @@ const router = useRouter()
     
     const [user, loading, error] = useAuthState(auth);
     
-    const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    const onSubmit: SubmitHandler<IFormInput> = (data, error) => {
         const {firstName, lastName, email, password} = data
         registerWithEmailAndPassword(firstName, email, password)
     }
 useEffect(() => {
-    if (loading) return;
+    if (loading) return 'loading...';
     if (user) router.push('/feed')
-  }, [user, loading, router]);
-    const password = watch("password", "");
+}, [user, loading, router]);
+    
+    // const password = watch("password", "");
 
   return (
       <div className='grid grid-cols-5 space-x-40'>
@@ -98,12 +101,12 @@ useEffect(() => {
                       <label htmlFor="password">Password</label>
                   <input type="text" {...register("password", {required: true})} placeholder='*******' name='password' className='border border-[#CED4DA] p-2 rounded-lg shadow-input' />
                   </div>
-                  <div  className='flex flex-col text-[#3B3B3B] flex-1 gap-y-3'>
+                  {/* <div  className='flex flex-col text-[#3B3B3B] flex-1 gap-y-3'>
                       <label htmlFor="cPassword">Confirm Password</label>
-                      <input type="text"  {...register("confirmPassword", { required: true , validate: (value: string) => value === password || "Passwords do not match."})} placeholder='*******' name='cPassword' className='border border-[#CED4DA] p-2 rounded-lg shadow-input' />
-                        {errors.confirmPassword && <span className='text-red-500'>Passwords do not match</span>}
+                      <input type="text"  {...register("confirmPassword", { required: true })} placeholder='*******' name='cPassword' className='border border-[#CED4DA] p-2 rounded-lg shadow-input' /> */}
+                        {/* {errors.confirmPassword && <span className='text-red-500'>Passwords do not match</span>} */}
 
-                  </div>
+                  {/* </div> */}
                   <input type='submit' className='w-full bg-[#543EE0] rounded-lg py-3 text-white'value='Create account'/>
               </form>
                <button className='w-full border border-[#CED4DA] rounded-lg py-3 my-6' onClick={signInWithGoogle}>Sign up with google</button>

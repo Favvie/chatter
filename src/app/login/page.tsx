@@ -25,7 +25,7 @@ export default function Login() {
     setInputValue(e.target.value);
     };
     
-    const { register, handleSubmit, watch, formState: { errors } } = useForm<IFormInput>()
+  const { register, handleSubmit, watch, formState: { errors } } = useForm<IFormInput>()
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     const { email, password } = data
     logInWithEmailAndPassword(email, password)
@@ -35,6 +35,7 @@ export default function Login() {
   const [user, loading, error] = useAuthState(auth);
   useEffect(() => {
     if (loading) {
+
       return;
     }
     if (user) router.push('/feed');
@@ -53,7 +54,7 @@ export default function Login() {
           </div>
         <section className='col-start-3 col-end-5 p-5 w-full'>
               <div>
-                  <Link href='/register'><span>Register</span></Link>
+                  <Link href='/signup'><span>Register</span></Link>
                   <Link href='/login'><span>Login</span></Link>
               </div>
               <h2 className='text-left font-bold text-3xl p-14'>Welcome back</h2>

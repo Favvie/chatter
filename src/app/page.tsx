@@ -8,22 +8,23 @@ import Review from '../../public/review.png'
 import whiteGuy from '../../public/white_guy.png'
 import Lady from '../../public/lady.png'
 import manGlasses from '../../public/man_in_glasses.png'
+import Link from 'next/link'
 
 export default function Home() {
   return (
     <>
       <header className='bg-white w-[90%] mx-auto flex justify-between items-center py-4'>
-        <h1 className='text-primary font-bold text-5xl uppercase'>chatter</h1>
+        <h1 className='text-primary font-bold text-5xl uppercase'>Chatter</h1>
         <nav className='flex gap-x-6 font-bold '>
-          <p>Home</p>
-          <p>About us</p>
-          <p>Contact</p>
-          <p>Blogs</p>
+          <Link href='/'>Home</Link>
+          <Link href='/'>About us</Link>
+          <Link href=''>Contact</Link>
+          <Link href='/'>Blogs</Link>
         </nav>
 
         <div className='mt-1 '>
-          <button className='border border-primary rounded-lg font-bold py-3 px-12 mr-7'>Log in</button>
-          <button className='bg-primary text-white py-4 px-11 rounded-lg font-bold'>Sign up</button>
+          <Link href='/login'><button className='border border-primary rounded-lg font-bold py-3 px-12 mr-7'>Log in</button></Link>
+          <Link href='/signup'><button className='bg-primary text-white py-4 px-11 rounded-lg font-bold'>Sign up</button></Link>
         </div>
     </header>
       <main className="">
@@ -81,7 +82,7 @@ export default function Home() {
             <div className='space-y-4'>
             <p>Chatter has become an integral part of my online experience. As a user of this incredible blogging platform, I have discovered a vibrant community of individuals who are passionate about sharing their ideas and engaging in thoughtful discussions.</p>
             <p className='font-bold text-2xl'>Adebobola Muhydeen,<span className='font-normal text-sm'>  Software developer at Apple </span></p>
-            <button className='self-start bg-primary font-bold py-3 px-8 rounded-lg text-white'>Join chatter</button>
+            <button className='self-start bg-primary font-bold py-3 px-8 rounded-lg text-white'><Link href='/signup'>Join chatter</Link></button>
           </div>
           </div>
         </section>
@@ -100,7 +101,7 @@ export default function Home() {
           <div className='space-y-3 w-[60%]'>
           <h2 className='font-bold text-5xl leading-[150%]'>Write, read and connect with great minds on chatter</h2>
           <p>Share people your great ideas, and also read write-ups based on your interests. connect with people of same interests and goals  </p>
-          <button className='self-start bg-primary font-bold py-3 px-8 rounded-lg text-white'>Get Started</button>
+          <button className='self-start bg-primary font-bold py-3 px-8 rounded-lg text-white'><Link href='/signup'>Get Started</Link></button>
           </div>
         </section>
       </main>
